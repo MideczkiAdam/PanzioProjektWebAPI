@@ -6,7 +6,7 @@ namespace PanzioProjektWebAPI.Models
     {
         public int Id { get; set; }
         [Required]
-        public int BookingId { get; set; } // idegen kulcs a Booking táblára
+        public int BookingId { get; set; } // idegen kulcss a Booking táblára
         [Required]
         [Range(1, 5, ErrorMessage = "A minősítésnek 1 és 5 között kell lennie!")]
         public int Rating { get; set; }
