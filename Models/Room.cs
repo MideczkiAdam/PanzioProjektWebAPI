@@ -13,5 +13,8 @@ namespace PanzioProjektWebAPI.Models
         public int RoomTypeId { get; set; } //idegen kulcs a RoomType táblára
         [Required]
         public bool IsActive { get; set; }
+
+        public RoomType RoomType { get; set; }
+        public ICollection<Booking> Bookings { get; set; }
     }
 }

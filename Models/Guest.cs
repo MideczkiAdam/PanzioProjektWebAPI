@@ -15,5 +15,7 @@ namespace PanzioProjektWebAPI.Models
         public string? Phone { get; set; }
         [Required]
         public DateTime RegisteredAt { get; set; }
+
+        public ICollection<Booking> Bookings { get; set; }
     }
 }

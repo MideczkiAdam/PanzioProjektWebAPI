@@ -36,5 +36,9 @@ namespace PanzioProjektWebAPI.Models
         public int TotalPrice { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }
+
+        public Room Room { get; set; }
+        public Guest Guest { get; set; }
+        public Review? Review { get; set; }
     }
 }

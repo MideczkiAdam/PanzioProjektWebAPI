@@ -13,5 +13,7 @@ namespace PanzioProjektWebAPI.Models
         public string? Comment { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }
+
+        public Booking Booking { get; set; }
     }
 }
