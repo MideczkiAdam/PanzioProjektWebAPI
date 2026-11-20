@@ -6,11 +6,11 @@ namespace PanzioProjektWebAPI.Models
     {
         public int Id { get; set; }
         [Required]
-        public int Number { get; set; } // egyedi
+        public int Number { get; set; }
         [Required]
         public int Floor { get; set; }
         [Required]
-        public int RoomTypeId { get; set; } //idegen kulcs a RoomType táblára
+        public int RoomTypeId { get; set; }
         [Required]
         public bool IsActive { get; set; }
 
