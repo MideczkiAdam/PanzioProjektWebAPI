@@ -62,6 +62,152 @@ namespace PanzioProjektWebAPI.Migrations
 
                             t.HasCheckConstraint("CK_Booking_TotalPrice", "TotalPrice >= 0");
                         });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CheckIn = new DateTime(2026, 10, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 9, 20, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 1,
+                            NumberOfGuests = 1,
+                            RoomId = 1,
+                            Status = "CheckedOut",
+                            TotalPrice = 36000
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CheckIn = new DateTime(2026, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 9, 25, 12, 0, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 2,
+                            NumberOfGuests = 2,
+                            RoomId = 3,
+                            Status = "CheckedOut",
+                            TotalPrice = 54000
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CheckIn = new DateTime(2026, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 9, 28, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 3,
+                            NumberOfGuests = 4,
+                            RoomId = 6,
+                            Status = "CheckedOut",
+                            TotalPrice = 140000
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CheckIn = new DateTime(2026, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 10, 8, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 1,
+                            NumberOfGuests = 5,
+                            RoomId = 8,
+                            Status = "CheckedOut",
+                            TotalPrice = 84000
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CheckIn = new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 11, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 10, 12, 13, 10, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 4,
+                            NumberOfGuests = 2,
+                            RoomId = 4,
+                            Status = "CheckedOut",
+                            TotalPrice = 54000
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CheckIn = new DateTime(2026, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 11, 2, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 5,
+                            NumberOfGuests = 1,
+                            RoomId = 2,
+                            Status = "CheckedIn",
+                            TotalPrice = 48000
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CheckIn = new DateTime(2026, 11, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 11, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 11, 5, 17, 40, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 2,
+                            NumberOfGuests = 2,
+                            RoomId = 5,
+                            Status = "CheckedIn",
+                            TotalPrice = 36000
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CheckIn = new DateTime(2026, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 11, 10, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 3,
+                            NumberOfGuests = 3,
+                            RoomId = 7,
+                            Status = "Confirmed",
+                            TotalPrice = 196000
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CheckIn = new DateTime(2026, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 12, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 11, 12, 8, 50, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 6,
+                            NumberOfGuests = 1,
+                            RoomId = 1,
+                            Status = "Confirmed",
+                            TotalPrice = 24000
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CheckIn = new DateTime(2026, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 11, 18, 19, 5, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 4,
+                            NumberOfGuests = 2,
+                            RoomId = 3,
+                            Status = "Pending",
+                            TotalPrice = 54000
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CheckIn = new DateTime(2026, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 12, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 11, 8, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 5,
+                            NumberOfGuests = 4,
+                            RoomId = 8,
+                            Status = "Cancelled",
+                            TotalPrice = 168000
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CheckIn = new DateTime(2026, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CheckOut = new DateTime(2026, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 11, 14, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            GuestId = 6,
+                            NumberOfGuests = 2,
+                            RoomId = 8,
+                            Status = "Confirmed",
+                            TotalPrice = 84000
+                        });
                 });
 
             modelBuilder.Entity("PanzioProjektWebAPI.Models.Guest", b =>
@@ -94,6 +240,54 @@ namespace PanzioProjektWebAPI.Migrations
                         {
                             t.HasCheckConstraint("CK_Guest_Name", "length(Name) <= 100");
                         });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "kovacs.anna@example.com",
+                            Name = "Kovács Anna",
+                            Phone = "+36301234567",
+                            RegisteredAt = new DateTime(2026, 9, 1, 10, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "nagy.peter@example.com",
+                            Name = "Nagy Péter",
+                            Phone = "+36202345678",
+                            RegisteredAt = new DateTime(2026, 9, 5, 14, 30, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "szabo.eszter@example.com",
+                            Name = "Szabó Eszter",
+                            Phone = "+36703456789",
+                            RegisteredAt = new DateTime(2026, 9, 12, 9, 15, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "toth.gabor@example.com",
+                            Name = "Tóth Gábor",
+                            RegisteredAt = new DateTime(2026, 9, 20, 18, 45, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "varga.katalin@example.com",
+                            Name = "Varga Katalin",
+                            Phone = "+36304567890",
+                            RegisteredAt = new DateTime(2026, 10, 3, 11, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Email = "kiss.marton@example.com",
+                            Name = "Kiss Márton",
+                            RegisteredAt = new DateTime(2026, 10, 15, 16, 20, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("PanzioProjektWebAPI.Models.Review", b =>
@@ -123,6 +317,39 @@ namespace PanzioProjektWebAPI.Migrations
                         {
                             t.HasCheckConstraint("CK_Review_Rating", "Rating >= 1 AND Rating <= 5");
                         });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BookingId = 1,
+                            Comment = "Tiszta, csendes szoba, nagyon kedves személyzet.",
+                            CreatedAt = new DateTime(2026, 10, 9, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 5
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BookingId = 2,
+                            Comment = "Jó elhelyezkedés, a reggeli lehetett volna változatosabb.",
+                            CreatedAt = new DateTime(2026, 10, 14, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 4
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BookingId = 3,
+                            Comment = "A gyerekek imádták, bőven elfértünk négyen.",
+                            CreatedAt = new DateTime(2026, 10, 21, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BookingId = 4,
+                            CreatedAt = new DateTime(2026, 10, 28, 9, 20, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 3
+                        });
                 });
 
             modelBuilder.Entity("PanzioProjektWebAPI.Models.Room", b =>
@@ -151,6 +378,80 @@ namespace PanzioProjektWebAPI.Migrations
                     b.HasIndex("RoomTypeId");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Floor = 1,
+                            IsActive = true,
+                            Number = 101,
+                            RoomTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Floor = 1,
+                            IsActive = true,
+                            Number = 102,
+                            RoomTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Floor = 1,
+                            IsActive = true,
+                            Number = 103,
+                            RoomTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Floor = 2,
+                            IsActive = true,
+                            Number = 201,
+                            RoomTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Floor = 2,
+                            IsActive = true,
+                            Number = 202,
+                            RoomTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Floor = 2,
+                            IsActive = true,
+                            Number = 203,
+                            RoomTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Floor = 3,
+                            IsActive = true,
+                            Number = 301,
+                            RoomTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Floor = 3,
+                            IsActive = true,
+                            Number = 302,
+                            RoomTypeId = 4
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Floor = 3,
+                            IsActive = false,
+                            Number = 303,
+                            RoomTypeId = 4
+                        });
                 });
 
             modelBuilder.Entity("PanzioProjektWebAPI.Models.RoomType", b =>
@@ -185,6 +486,40 @@ namespace PanzioProjektWebAPI.Migrations
                             t.HasCheckConstraint("CK_RoomType_Name", "length(Name) <= 50");
 
                             t.HasCheckConstraint("CK_RoomType_PricePerNight", "PricePerNight > 0");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Capacity = 1,
+                            Description = "Kényelmes egyágyas szoba egy főnek.",
+                            Name = "Egyágyas",
+                            PricePerNight = 12000
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Capacity = 2,
+                            Description = "Két külön ággyal vagy franciaággyal.",
+                            Name = "Kétágyas",
+                            PricePerNight = 18000
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Capacity = 4,
+                            Description = "Tágas szoba családoknak, pótággyal.",
+                            Name = "Családi",
+                            PricePerNight = 28000
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Capacity = 6,
+                            Description = "Különálló hálóval és konyhasarokkal.",
+                            Name = "Apartman",
+                            PricePerNight = 42000
                         });
                 });
 

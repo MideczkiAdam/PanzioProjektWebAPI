@@ -90,6 +90,7 @@ namespace PanzioProjektWebAPI.Data
                 });
             });
 
+            modelBuilder.Seed();
 
         }
     }
