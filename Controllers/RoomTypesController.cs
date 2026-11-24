@@ -81,7 +81,7 @@ public class RoomTypesController : ControllerBase
 
         if (roomtype == null)
         {
-            return NotFound($"A(z) {id} azonosítójú szobatípus nem létezik.");
+            return NotFound($"A(z) {id} azonosítójú szobatípus nem létezik!");
         }
 
         return roomTypeDTO;
@@ -101,14 +101,14 @@ public class RoomTypesController : ControllerBase
 
         if (existingRoomType == null)
         {
-            return NotFound($"A(z) {id} azonosítójú szobatípus nem létezik.");
+            return NotFound($"A(z) {id} azonosítójú szobatípus nem létezik!");
         }
 
         var name = roomtype.Name.Trim();
 
         if (await _context.RoomTypes.AnyAsync(r => r.Name == name && r.Id != id))
         {
-            return Conflict($"Már létezik '{name}' nevű szobatípus.");
+            return Conflict($"Már létezik '{name}' nevű szobatípus!");
         }
 
         existingRoomType.Name = name;
@@ -144,7 +144,7 @@ public class RoomTypesController : ControllerBase
 
         if (await _context.RoomTypes.AnyAsync(r => r.Name == name))
         {
-            return Conflict($"Már létezik '{name}' nevű szobatípus.");
+            return Conflict($"Már létezik '{name}' nevű szobatípus!");
         }
 
         var newRoomType = new RoomType

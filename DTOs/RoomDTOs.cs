@@ -17,4 +17,30 @@ namespace PanzioProjektWebAPI.DTOs
         [Required]
         public bool IsActive { get; set; }
     }
+
+    public class PostRoomDTO
+    {
+        [Required]
+        public int Number { get; set; }
+
+        [Required]
+        public int Floor { get; set; }
+        public string RoomTypeName { get; set; }
+
+        public bool IsActive { get; set; } = true;
+    }
+
+    public class PutRoomDTO
+    {
+        public int Id { get; set; }
+        [Required]
+        public int Number { get; set; }
+        [Required]
+        public int Floor { get; set; }
+        [Required]
+        public string RoomTypeName { get; set; }
+        [Required]
+        public bool IsActive { get; set; }
+    }
+
 }

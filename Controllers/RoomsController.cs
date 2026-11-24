@@ -5,6 +5,7 @@ using PanzioProjektWebAPI.Data;
 using PanzioProjektWebAPI.DTOs;
 using PanzioProjektWebAPI.Models;
 using System.Linq.Expressions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -63,7 +64,7 @@ public class RoomsController : ControllerBase
     {
         if ((CheckIn == null) != (CheckOut == null))
         {
-            return BadRequest("Szabad szoba kereséséhez az érkezés és a távozás napját is meg kell adni.");
+            return BadRequest("Szabad szoba kereséséhez az érkezés és a távozás napját is meg kell adni!");
         }
 
         var query = _context.Rooms.AsNoTracking().AsQueryable();
@@ -84,7 +85,7 @@ public class RoomsController : ControllerBase
 
             if (checkOut <= checkIn)
             {
-                return BadRequest("A távozás napjának az érkezés napja utáni napnak kell lennie.");
+                return BadRequest("A távozás napjának az érkezés napja utáni napnak kell lennie!");
             }
 
             // Szabad időszakra csak aktív szoba kereshető, amire nincs átfedő, nem lemondott foglalás
@@ -116,13 +117,15 @@ public class RoomsController : ControllerBase
 
     // GET: api/Room/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Room>> GetRoom(int id)
+    public async Task<ActionResult<GetRoomDTO>> GetRoom(int id)
     {
-        var room = await _context.Rooms.FindAsync(id);
+        var room = await _context.Rooms.Where(r => r.Id == id)
+            .Select(ToDto)
+            .FirstOrDefaultAsync();
 
         if (room == null)
         {
-            return NotFound();
+            return NotFound($"A(z) {id} azonosítójú szoba nem létezik!");
         }
 
         return room;
@@ -131,14 +134,32 @@ public class RoomsController : ControllerBase
     // PUT: api/Room/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutRoom(int? id, Room room)
+    public async Task<IActionResult> PutRoom(int? id, PutRoomDTO room)
     {
         if (id != room.Id)
         {
             return BadRequest();
         }
+        var existingRoom = await _context.Rooms.FindAsync(id);
+        if (existingRoom == null)
+        {
+            return NotFound($"A(z) {id} azonosítójú szoba nem létezik.");
+        }
 
-        _context.Entry(room).State = EntityState.Modified;
+        if (!await _context.RoomTypes.AnyAsync(rt => rt.Name == room.RoomTypeName))
+        {
+            return BadRequest($"A(z) {room.RoomTypeName} nevű szobatípus nem létezik!");
+        }
+
+        if (await _context.Rooms.AnyAsync(r => r.Number == room.Number))
+        {
+            return Conflict($"Már létezik '{room.Number}' számú szoba!");
+        }
+
+        existingRoom.Number = room.Number;
+        existingRoom.Floor = room.Floor;
+        existingRoom.RoomTypeId = (await _context.RoomTypes.FirstAsync(rt => rt.Name == room.RoomTypeName)).Id;
+        existingRoom.IsActive = room.IsActive;
 
         try
         {
@@ -162,12 +183,34 @@ public class RoomsController : ControllerBase
     // POST: api/Room
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-    public async Task<ActionResult<Room>> PostRoom(Room room)
+    public async Task<ActionResult<Room>> PostRoom(PostRoomDTO room)
     {
-        _context.Rooms.Add(room);
+        if (!await _context.RoomTypes.AnyAsync(rt => rt.Name == room.RoomTypeName))
+        {
+            return BadRequest($"A(z) {room.RoomTypeName} nevű szobatípus nem létezik!");
+        }
+
+        if (await _context.Rooms.AnyAsync(r => r.Number == room.Number))
+        {
+            return Conflict($"Már létezik '{room.Number}' számú szoba!");
+        }
+
+        var newRoom = new Room
+        {
+            Number = room.Number,
+            Floor = room.Floor,
+            RoomTypeId = (await _context.RoomTypes.FirstAsync(rt => rt.Name == room.RoomTypeName)).Id,
+            IsActive = room.IsActive
+        };
+        _context.Rooms.Add(newRoom);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetRoom", new { id = room.Id }, room);
+        var result = await _context.Rooms.AsNoTracking()
+                .Where(r => r.Id == newRoom.Id)
+                .Select(ToDto)
+                .FirstAsync();
+
+        return CreatedAtAction("GetRoom", new { id = newRoom.Id }, result);
     }
 
     // DELETE: api/Room/5
@@ -177,7 +220,12 @@ public class RoomsController : ControllerBase
         var room = await _context.Rooms.FindAsync(id);
         if (room == null)
         {
-            return NotFound();
+            return NotFound($"A(z) {id} azonosítójú szoba nem létezik!");
+        }
+
+        if (await _context.Bookings.AnyAsync(b => b.RoomId == id))
+        {
+            return Conflict("A szoba nem törölhető, mert tartoznak hozzá foglalások!");
         }
 
         _context.Rooms.Remove(room);
